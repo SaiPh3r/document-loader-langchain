@@ -7,7 +7,7 @@ load_dotenv()
 
 loader = TextLoader('requirements.txt')
 model = ChatGoogleGenerativeAI(model="models/gemini-2.5-flash") 
-promt = PromptTemplate(
+prompt = PromptTemplate(
     template='write a basic information about following requirement{req}' , 
     input_variables=['req']
 )
@@ -16,7 +16,7 @@ parser = StrOutputParser()
 
 doc = loader.load()
 
-chain = promt | model | parser
+chain = prompt | model | parser
 
 print(doc[0].page_content)
 
